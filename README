@@ -16,6 +16,3 @@ Ignore the calendar, RRD Sample Interval will set how far back the data goes
 RRD Sample Interval needs to be multiple of 60
 If there is no RRD for a given host error is not pretty
 
-
-
-

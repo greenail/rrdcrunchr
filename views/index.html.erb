@@ -53,6 +53,7 @@ end
 </table>
 <br>
 <br>
+<!--
 <span id="dtg">Showing 8 hours 38 mins of data</span><br>
 <input name="df"
       value="2008-05-19"
@@ -65,6 +66,7 @@ end
       size="10"><input name="tt"
       value="23:57"
       size="5"><br>
+-->
 <input type="submit"
       value="refresh">
 </form><BR>
@@ -79,7 +81,11 @@ for host in @hosts
 		file = "#{@rrdp}/#{host}/#{type}" 
 		if (File.exists?(file))
 			puts "Loading File: #{file} type: #{type}"
-			uri,rrd_name,ymin,ymax,stat_median,is_zero = get_uri(file,interval,resolution,host)
+			stuff = []
+			#uri,rrd_name,ymin,ymax,stat_median,is_zero = get_uri(file,interval,resolution,host)
+			stuff = get_uri(file,interval,resolution,host)
+			uri,rrd_name,ymin,ymax,stat_median,is_zero = stuff
+			
 		else
 			puts "Can't find #{file} type: #{type} #{type}"
 		end
@@ -98,7 +104,7 @@ end
 end
 %>
 
-
+<%= partial( "t1" ,:stuff => stuff) %>
 
 <!--
 <% for host in @hosts%>
